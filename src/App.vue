@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import ScoreTable from './components/ScoreTable.vue';
 import ThrownDice from './components/ThrownDice.vue';
 
-const dice = ref<number[]>([]);
+const dice = ref<number[]>([0, 0, 0, 0, 0]);
 
 </script>
 
