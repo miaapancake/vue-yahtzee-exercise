@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { chance, fullHouse, inARow, ofAKind, singleScores, yahtzee, type Score } from '@/utils/rules';
+import { chance, fullHouse, street, ofAKind, singleScores, yahtzee, type Score } from '@/utils/rules';
 import { computed } from 'vue';
 
 
@@ -14,8 +14,8 @@ const scores = computed(() => {
   scoreList.push(...singleScores(props.dice));
   scoreList.push(ofAKind(props.dice, 3, "Three of a kind"));
   scoreList.push(ofAKind(props.dice, 4, "Four of a kind"));
-  scoreList.push(inARow(props.dice, 3, 30, "Small Street"));
-  scoreList.push(inARow(props.dice, 4, 40, "Large Street"));
+  scoreList.push(street(props.dice, 3));
+  scoreList.push(street(props.dice, 4));
   scoreList.push(fullHouse(props.dice));
   scoreList.push(chance(props.dice));
   scoreList.push(yahtzee(props.dice));

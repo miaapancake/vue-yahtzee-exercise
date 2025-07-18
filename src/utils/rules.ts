@@ -39,24 +39,27 @@ export function singleScores(dice: number[]): Score[] {
   return scores
 }
 
-export function inARow(dice: number[], min: number, reward: number, name: string): Score {
-  let maxInARow = 1
+export function street(dice: number[], min: number): Score {
+  let maxInARow = 0
+  let currentInARow = 1
   let prevDie = -1
 
   const uniqueDice = dice.filter(unique)
 
   for (const die of uniqueDice) {
     if (die == prevDie + 1) {
-      maxInARow += 1
+      currentInARow += 1
     } else {
-      maxInARow = 1
+      if (currentInARow > maxInARow) maxInARow = currentInARow
+      currentInARow = 1
     }
     prevDie = die
   }
+  if (maxInARow < currentInARow) maxInARow = currentInARow
 
   return {
-    name,
-    score: maxInARow >= min ? reward : 0,
+    name: min > 3 ? 'Big Street' : 'Small Street',
+    score: maxInARow >= min ? min * 10 : 0,
   }
 }
 
