@@ -3,13 +3,13 @@ import { ref } from 'vue';
 import ScoreTable from './components/ScoreTable.vue';
 import ThrownDice from './components/ThrownDice.vue';
 
-const dice = ref<number[]>([0, 0, 0, 0, 0]);
+const dice = ref<number[]>([-1, 0, 0, 0, 0]);
 
 </script>
 
 <template>
   <main>
-    <ScoreTable />
+    <ScoreTable :dice="dice" />
     <ThrownDice v-model="dice" />
   </main>
 </template>
