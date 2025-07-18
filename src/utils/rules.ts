@@ -9,7 +9,7 @@ function unique<T>(value: T, index: number, array: T[]): boolean {
   return array.indexOf(value) == index
 }
 
-function sum(prev: number, current: number): number {
+export function sum(prev: number, current: number): number {
   return prev + current
 }
 
